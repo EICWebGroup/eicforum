@@ -1,0 +1,43 @@
+RewriteEngine On
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+#private
+RewriteRule ^config/?$ / 
+RewriteRule ^controller/?$ /
+RewriteRule ^models/?$ /
+
+RewriteRule ^forum_main.php$ /
+
+#toppest
+RewriteRule ^/?$ /views/layout.php?path=account&target=login [QSA,L]
+
+# account
+RewriteRule ^account/?$ /views/layout.php?path=account [QSA,L]
+RewriteRule ^account/([A-Za-z0-9]+)/? /views/layout.php?path=account&target=$1 [QSA,L]
+
+
+# thread
+RewriteRule ^thread/?$                                  /views/layout.php?path=thread&tab=all [QSA,L]
+RewriteRule ^thread/create/?$                           /views/layout.php?path=thread&target=create [QSA,L]
+RewriteRule ^thread/createrss/?$                        /views/layout.php?path=thread&target=createrss [QSA,L]
+RewriteRule ^thread/((?!create)[A-Za-z]+)/?$            /views/layout.php?path=thread&tab=$1&page=1 [QSA,L]
+RewriteRule ^thread/((?!create)[A-Za-z]+)/page/([0-9]+)/?$ /views/layout.php?path=thread&tab=$1&page=$2 [QSA,L]
+RewriteRule ^thread/([0-9]+)/?$                         /views/layout.php?path=thread&target=$1 [QSA,L]
+RewriteRule ^thread/([0-9]+)/post/([0-9]+)?$            /views/layout.php?path=thread&target=$1&request_post=$2 [QSA,L]
+RewriteRule ^thread/([0-9]+)/editrss/([0-9]+)/?$        /views/layout.php?path=thread&target=$1&action=editrss&tgt2=$2 [QSA,L]
+RewriteRule ^thread/([0-9]+)/edit/([0-9]+)/?$           /views/layout.php?path=thread&target=$1&action=edit&tgt2=$2 [QSA,L]
+RewriteRule ^thread/([0-9]+)/delete/([0-9]+)/?$         /views/layout.php?path=thread&target=$1&action=delete&tgt2=$2 [QSA,L]
+RewriteRule ^thread/([0-9]+)/delete/([0-9]+)/confirm/?$ /views/layout.php?path=thread&target=$1&action=delete&tgt2=$2&confirm=true [QSA,L]
+RewriteRule ^thread/([0-9]+)/page/([0-9]+)/?$           /views/layout.php?path=thread&target=$1&page=$2 [QSA,L]
+
+#manager
+RewriteRule ^manager/([A-Za-z]+)/?$ /views/layout.php?path=manager&target=$1 [QSA,L]
+
+#help
+RewriteRule ^help/?$ /views/layout.php?path=help [QSA,L]
+
+#test
+RewriteRule ^test3.mytest/?$ /test3.php

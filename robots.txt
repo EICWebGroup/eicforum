@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /garake/
+Disallow: /thread/
+Disallow: /css/
+Disallow: /common/
+Disallow: /apps/
+Disallow: /acc_auth/
