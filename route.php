@@ -90,5 +90,8 @@
 	}else if($_GET[KEY_PATH] == "help"){
 		include CONTROLLER_PATH . "help.php";
 		HelpController::show();
-	}
+	}else if($_GET[KEY_PATH] == "search"){
+            include CONTROLLER_PATH . "search.php";
+            SearchController::index();
+        }
 ?>

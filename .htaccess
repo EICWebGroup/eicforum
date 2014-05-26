@@ -1,6 +1,6 @@
 RewriteEngine On
 
-php_flag  display_errors On
+#php_flag  display_errors On
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -19,7 +19,6 @@ RewriteRule ^/?$ /views/layout.php?path=account&target=login [QSA,L]
 # account
 RewriteRule ^account/?$ /views/layout.php?path=account [QSA,L]
 RewriteRule ^account/([A-Za-z0-9]+)/? /views/layout.php?path=account&target=$1 [QSA,L]
-
 
 # thread
 RewriteRule ^thread/?$                                  /views/layout.php?path=thread&tab=all [QSA,L]
@@ -41,5 +40,5 @@ RewriteRule ^manager/([A-Za-z]+)/?$ /views/layout.php?path=manager&target=$1 [QS
 #help
 RewriteRule ^help/?$ /views/layout.php?path=help [QSA,L]
 
-#test
-RewriteRule ^test3.mytest/?$ /test3.php
+# search
+RewriteRule ^search/?$ /views/layout.php?path=search [QSA,L]

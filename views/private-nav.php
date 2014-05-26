@@ -61,11 +61,25 @@
         vertical-align: middle;
         font-size:30px;;
     }
+    .search{
+    	float:right;
+    	display:block;
+    }
+    .search input{
+    	display:inline-block;
+    }
 </style>
 <div class="logo-nav">
     <div class="container" style="vertical-align:middle;line-height: 60px;">
         <div class="fifteen columns">
             <a class="logo" href="/thread/"><strong style="color:rgb(61,132,239);font-weight: bolder;">EIC&nbsp;</strong><span style="color:black;">掲示板</span></a>
+			
+			<form class="search" action="https://eicforum.mydns.jp/search" method="get">
+				<input type="text" name="search">
+				<input type="submit" value="検索">
+			</form>
+
+			
         </div>
     </div>
 </div>
