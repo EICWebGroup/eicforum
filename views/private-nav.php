@@ -61,23 +61,23 @@
         vertical-align: middle;
         font-size:30px;;
     }
-    .search{
+    /*.search{
     	float:right;
     	display:block;
     }
     .search input{
     	display:inline-block;
-    }
+    }*/
 </style>
 <div class="logo-nav">
     <div class="container" style="vertical-align:middle;line-height: 60px;">
         <div class="fifteen columns">
             <a class="logo" href="/thread/"><strong style="color:rgb(61,132,239);font-weight: bolder;">EIC&nbsp;</strong><span style="color:black;">掲示板</span></a>
-			
+			<!-- 
 			<form class="search" action="https://eicforum.mydns.jp/search" method="get">
 				<input type="text" name="search">
 				<input type="submit" value="検索">
-			</form>
+			</form> -->
 
 			
         </div>
@@ -90,7 +90,11 @@
 			<div class="clearfix" style="height:100%;">
 
 				<a class="anchor nav-item right" href="/account/signout"><i class="fa fa-sign-out"></i><span class="box-text">サインアウト</span></a>
-				<a class="anchor nav-item right" href="/account/"><i class="fa fa-user"></i><span class="box-text">アカウント</span></a>
+
+				<!-- GA begin -->
+				<a onClick="_gaq.push(['_trackEvent', 'Tabs', 'Account', 'Account tab is clicked']);" class="anchor nav-item right" href="/account/"><i class="fa fa-user"></i><span class="box-text">アカウント</span></a>
+				<!-- GA end -->
+
 				<a class="anchor nav-item right" href="/help/"><i class="fa fa-question-circle"></i><span class="box-text">手引き</span></a>
    				<!-- <a class="anchor nav-item right nav-item-create-thread" href="/thread/create/"><i class="fa fa-comments-o nav-item-create-thread"></i><span class="box-text"></span></a> -->
                 <?php if($_SESSION[KEY_SESSION][Account::KEY_ADMIN] == "1"): ?>
@@ -99,7 +103,7 @@
 
 				<a class="anchor nav-item right garake-item" href="/thread/create"><i class="fa fa-comments-o"></i><span class="box-text">質問したい！</span></a>
                 <a class="anchor nav-item right garake-item" href="/thread/createrss"><i class="fa fa-rss"></i><span class="box-text">RSS</span></a>
-
+                <a class="anchor nav-item right garake-item" href="/search"><i class="fa fa-search"></i><span class="box-text">検索</span></a>
 			</div>
 
 		</div>

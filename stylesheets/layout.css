@@ -28,11 +28,14 @@ body{
 }
 
 html, body{
-	height:97%;
+	height:100%;
 }
 
-.wrapper{
+.wrapper {
 	min-height:95%;
+}
+.body-wrapper{
+	min-height: 100%;
 }
 
 .login-box-position{ float:right; }
