@@ -65,35 +65,25 @@
         <h3>検索機能</h3>
                         
 			<!-- include content here. For example, include create.php , show.php or list.php here. -->
-			
-                        <form class="search" action="https://eicforum.mydns.jp/search" method="get">
-				<input class="wmd-title" type="text" name="search" value="<?= $_GET["search"] ?>">
+
+            <form class="search" action="https://eicforum.mydns.jp/search" method="get">
+				<input class="wmd-title" type="text" name="search" value="<?= $_GET["search"] ?>" >
 				<button class="wmd-submit" type="submit" ><i class='fa fa-search fa-fw'></i></button>
 			</form>
                         
                         
-                        <?php
+<?php
 //ini_set("display_errors",1);
-//include_once ('simple_html_dom.php');
-
+error_reporting(1);
 
 
 if(!empty($_GET["search"])){
-
-	// 次に追加してほしい機能はHTMLから内容を抜き出すプログラミング。
-	// 今の場合は<a href="http://example.com?a=%30d">myText</a>を検索していると、example.com?aなどの
-	// いらない文字まで検索されてしまう。検索対象となるのはmyTextのみなので、myTextを抜き出すプログラミングを組んでみて
-	//
-	// ヒント：　"php simple_html_dom"について調べて 
-	//
-
 
 	$words = $_GET["search"];
 	//メタ文字のescape化
 	$words2 = preg_replace_callback("/[\*\?\+\[\]\(\)\{\}\^\$\|\\\\.\/]/",
 									function($matches){return "\\".$matches[0];},
 									$words);
-	//echo $words2;
 	
 	$threads=Thread::all();
  	$result_list=array();
@@ -106,13 +96,14 @@ if(!empty($_GET["search"])){
 			$html=str_get_html($Post[$i]->getContent());
 			//本文match?
 			if(preg_match("/$words2/i",$html->plaintext)){
-			
 				$obj = array(
 						"thread_id"	=> $threads[$j]->getId(),
 						"post_id" => $Post[$i]->getPostId(),
 						"title" => $threads[$j]->getTitle(),
 						"body"	=> $html->plaintext
 					);
+				
+				
 					
 				array_push($result_list, $obj);
 			
@@ -140,6 +131,7 @@ if(!empty($_GET["search"])){
 				echo "</ul>";
 				echo "<ul class='hit-post'>";
 				echo "<li class='hit-title'><h4 >{$title} </h4></li>";
+			
 			}
 
 		}
@@ -154,37 +146,39 @@ if(!empty($_GET["search"])){
 	// START : 文字の短縮
 	
 	mb_internal_encoding("UTF-8");
-
-	$i=8;
+	//$lengthは片側の「.」の数を入力
+	$length=8;
 	$str=$item["body"];
-	$sw=mb_strlen($words);
-	$ss=mb_strlen($str);
+	$slw=mb_strlen($words);
+	$sls=mb_strlen($str);
+	$spw=mb_stripos($str,$words,0);
 	
-	$k=mb_strpos($str,$words,0);
+	for(; $spw !== false ;){
 	
-	for(; $k !== false ;){
+		$start=$spw-$length;
+		$spe=$slw+$spw;
+		$str2=mb_substr($str,$spw,$slw);
+		$str3="<span style=\"background-color:yellow;\">{$str2}</span>";
 		
-
-		$start=$k-$i;
-		$length=$sw+2*$i;
-		
-		if($start<=0 && $ss>=$length){
+		if($start<=0 && $sls>=$length){
 			$start=0;
-			$length=2*$length;
-			$str2=mb_substr($str,$start,$length);
-			echo "{$str2}...";
-		}else if($ss-$k<$i+2 && $ss>=$length){
-			$str2=mb_substr($str,$start,$length);
-			echo "...{$str2}";
-		}else if($start>0 && $ss>=$length){
-			$str2=mb_substr($str,$start,$length);
-			echo "...{$str2}...";
+			$str4=mb_substr($str,$start,$spw);
+			$str5=mb_substr($str,$spe,$length);
+			echo "{$str4}{$str3}{$str5}...";
+		}else if($sls-$slw-$spw<=$length && $sls>=$length){
+			$str4=mb_substr($str,$start,$length);
+			$str5=mb_substr($str,$spe,$sls);
+			echo "...{$str4}{$str3}{$str5}";
+		}else if($start>0 && $sls>=$length){
+			$str4=mb_substr($str,$start,$length);
+			$str5=mb_substr($str,$spe,$length);
+			echo "...{$str4}{$str3}{$str5}...";	
 		}
-	
-		$offset = $k + 1;
-		$k=mb_strpos($str,$words,$offset);
+		
+		$offset = $spw + 1;
+		$spw=mb_strpos($str,$words,$offset);
 	}
-	
+
 	// END : 文字の短縮
 	////////////////////////////////////////////
 	
@@ -198,20 +192,19 @@ if(!empty($_GET["search"])){
 	
 	
 	//preg_matchに引っかからなかったPostがNotice errorとして表示されるのを非表示にする
-	
-	}
-        
-?>
-                        
-		</div>
 
+	}
+?>
+  
+		</div>
+		
 		<?php if(!Utils::is_mobile()): ?>
 		<div class="four columns side-column">
 
 			<div class="notice-block">
 				<h5><i class="fa fa-bookmark-o"></i>検索機能について</h5>
 				<br/>
-               <p>まだ制作段階です。もうすぐ完了です。もうちょっと待っててね。夜露死苦。</p>
+               <p>まだ制作段階です。もうすぐ完了です。もうちょっと待っててね。あふぃりりるー。</p>
 			</div>
 			<div class="offset-block"></div>
 		</div>

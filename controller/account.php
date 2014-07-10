@@ -91,7 +91,7 @@
                     $encrypted_password = Utils::encrpytPassword($password, $salt);
 
                     // verify campus by
-                    if(preg_match("/^[8]/", $studentId)){
+                    if(preg_match("/^[481]/", $studentId)){
                         $campus = "葛飾";
                     }else if(preg_match("/^[67]/", $studentId)){
                         $campus = "野田";

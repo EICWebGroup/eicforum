@@ -40,48 +40,6 @@
 			<!-- ////////////        begin of special thread   ///////// -->
 			<div class="clearfix">
 
-                <?php 
-
-                // Special update at 2014/5/21 
-                // 
-                /* if($thread->getSpecial() == "rss"): ?>
-                    <a class="item-title anchor" href="/thread/<?= $thread-> getId() ?>">
-                        <?= $thread->getTitle(); ?>
-                        <br/><span style="font-size:80%;color:black;"><i class="fa fa-rss"></i>RSSの記事</span>
-                        <?php if($thread->getPermission() == Thread::$PERMISSIONS[1]): ?>
-                            <br/><span style="font-size:80%;color:black;"><i class="fa fa-globe"></i><?= $thread->getHost()->getCampus() ?>の公開スレ</span>
-                        <?php endif;?>
-                    </a>
-                    <br/>
-                    <p class="item-descriptor"><?= Utils::getReadableDateTime($thread->getUpdateTimeInMillis())."に"; ?>
-                        <?php
-                            $author = $thread->getLastModifiedAuthor();
-                            echo "<a class='anchor' href=\"/account/".$author->getId()."\">".$author->getNickname()."</a>";
-                        ?>
-                    が更新</p>
-                <?php // else: ?>
-                    <?php if($thread->getSpecial() == "android"): ?>
-                        <a href="/thread/<?= $thread->getId() ?>"><img class="special-left special-img" src="/images/android.png" width="50px" height="50px"></a>
-                    <?php elseif($thread->getSpecial() == "java"): ?>
-                        <a href="/thread/<?= $thread->getId() ?>"><img class="special-left special-img" src="/images/Java_logo.png" width="50px" height="50px"></a>
-                    <?php endif; ?>
-                    <div class="special-right ">
-                        <a class="item-title anchor" href="/thread/<?= $thread-> getId() ?>">
-                            <?= $thread->getTitle(); ?>
-                            <?php if($thread->getPermission() == Thread::$PERMISSIONS[1]): ?>
-                                <br/><span style="font-size:80%;color:black;"><i class="fa fa-globe"></i><?= $thread->getHost()->getCampus() ?>の公開スレ</span>
-                            <?php endif;?>
-                        </a>
-                        <p class="special-p">作成者<a href="/account/<?= $thread->getHost()->getId()?>"><?= $thread->getHost()->getNickname()?></a></p>
-                        <p class="item-descriptor" ><?= Utils::getReadableDateTime($thread->getUpdateTimeInMillis())."に"; ?>
-                            <?php
-                                $author = $thread->getLastModifiedAuthor();
-                                echo "<a class='anchor' href=\"/account/".$author->getId()."\">".$author->getNickname()."</a>";
-                            ?>
-                        が更新</p>
-                    </div>
-                <?php endif; */ ?>
-
                 <?php if($thread->getSpecial() == "android"): ?>
                     <a href="/thread/<?= $thread->getId() ?>"><img class="special-left special-img" src="/images/android.png" width="50px" height="50px"></a>
                 <?php elseif($thread->getSpecial() == "java"): ?>
