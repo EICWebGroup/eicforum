@@ -76,7 +76,6 @@
 //ini_set("display_errors",1);
 error_reporting(1);
 
-
 if(!empty($_GET["search"])){
 
 	$words = $_GET["search"];
@@ -96,6 +95,7 @@ if(!empty($_GET["search"])){
 			$html=str_get_html($Post[$i]->getContent());
 			//本文match?
 			if(preg_match("/$words2/i",$html->plaintext)){
+
 				$obj = array(
 						"thread_id"	=> $threads[$j]->getId(),
 						"post_id" => $Post[$i]->getPostId(),
@@ -103,27 +103,24 @@ if(!empty($_GET["search"])){
 						"body"	=> $html->plaintext
 					);
 				
-				
-					
 				array_push($result_list, $obj);
-			
+		
 			}
 		
 		}
-		
-		
+
 	}
 	
 	echo "<h3><i class='fa fa-quote-left fa-fw fa-top-small'></i>".$words."<i class='fa-top-small fa-fw fa fa-quote-right'></i>についての検索結果は".count($result_list)."件。</h3>";
-	
+
 	$threadBegin = true;
 
 	echo "<ul class='hit-post'>";
 	foreach($result_list as $item){
-
+//echo $item["title"];
 		if($title!=$item["title"]){
 			$title=$item["title"];
-
+			
 			if($threadBegin){
 				echo "<li class='hit-title'><h4>{$title} </h4></li>";
 				$threadBegin = false;

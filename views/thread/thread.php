@@ -76,6 +76,10 @@
 			<a href="https://skydrive.live.com/" class="onedrive-block anchor-block anchor"><img src="/images/Logo_OneDrive.png"></img></a>
 
 			<div class="offset-block"></div>
+
+			<a href="http://codegarage.edisonthk.com/" class="onedrive-block anchor-block anchor"><span style="font-weight:bold;">&lt;/&gt; CodeGarage</span></a>
+
+			<div class="offset-block"></div>
 			<div class="notice-block">
 				<h5><i class="fa fa-bookmark-o"></i>お知らせ</h5>
 				<br/>
