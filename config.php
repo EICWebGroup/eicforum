@@ -2,7 +2,7 @@
 
 	//
 	// show error on browser
-	//error_reporting( E_ALL ); ini_set( "display_errors", 1 );
+	error_reporting( E_ALL ); ini_set( "display_errors", 1 );
 
 
     // httpからhttpsへリダイレクト
@@ -24,7 +24,7 @@
 	define('KEY_TARGET_2','tgt2', TRUE);
 
 	// system directory (config and common)
-	include ROOT . "config/config.php";
+	include ROOT . "config/utils.php";
 	
 	
 	include ROOT . "common/common.php";

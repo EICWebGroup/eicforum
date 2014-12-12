@@ -119,6 +119,17 @@
 			return $found;
 		}
 
+		// convert php file in VIEWS folder to string
+		public static function output_view($view_file, $ba372aa41a6c63b059cbf047f37f712a = array()){
+
+			foreach ($ba372aa41a6c63b059cbf047f37f712a as $ba372aa41a6c63b059cbf047f37f712b => $ba372aa41a6c63b059cbf047f37f712c) {
+				${$ba372aa41a6c63b059cbf047f37f712b} = $ba372aa41a6c63b059cbf047f37f712c;
+			}
+			
+			$body = "include VIEWS_PATH . $view_file";
+			include VIEWS_PATH . "base.php";
+		}
+
 		// find if there is unavailable tag on subject
 		public static function foundUnavailableTag($subject){
 			$tags = array("code","pre","li","ul","strong","a","img","ol","h1","h2","hr","em");

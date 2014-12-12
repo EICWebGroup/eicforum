@@ -24,14 +24,15 @@
 			}
 
 			include "private.php";
-			include VIEWS_PATH."private-nav.php";
+			include VIEWS_PATH . "private-nav.php";
 			include VIEWS_PATH . "account/show.php";
 		}
 
 		/////////////////////
 		public static function login(){
 			include "login.php";
-			include VIEWS_PATH . "account/login.php";
+
+            Utils::output_view("account/login.php",["login"=>$login]);
 		}
 
         public static function create(){
