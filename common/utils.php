@@ -126,7 +126,7 @@
 				${$ba372aa41a6c63b059cbf047f37f712b} = $ba372aa41a6c63b059cbf047f37f712c;
 			}
 			
-			$body = "include VIEWS_PATH . $view_file";
+			$body = "include VIEWS_PATH.\"".$view_file."\";";
 			include VIEWS_PATH . "base.php";
 		}
 
