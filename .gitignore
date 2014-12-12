@@ -1,5 +1,4 @@
 apps
-images
 common/uploadManager/server/php/files
 test*
 config
