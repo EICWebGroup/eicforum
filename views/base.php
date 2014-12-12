@@ -61,7 +61,7 @@
 
 </script>
 
-	<?php eval($body) ?>
+	<?php eval($ba372aa41a6c63b059cbf047f37f712e) ?>
 	<div id="footer">
 		<br />
 		<div class="container">

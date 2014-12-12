@@ -119,14 +119,24 @@
 			return $found;
 		}
 
-		// convert php file in VIEWS folder to string
-		public static function output_view($view_file, $ba372aa41a6c63b059cbf047f37f712a = array()){
+		// render view file
+		// Parameter 1: name of file where to rendered
+		// Parameter 2: variable which needed to be included in file
+		public static function output_view($ba372aa41a6c63b059cbf047f37f712f, $ba372aa41a6c63b059cbf047f37f712a = array()){
 
 			foreach ($ba372aa41a6c63b059cbf047f37f712a as $ba372aa41a6c63b059cbf047f37f712b => $ba372aa41a6c63b059cbf047f37f712c) {
 				${$ba372aa41a6c63b059cbf047f37f712b} = $ba372aa41a6c63b059cbf047f37f712c;
 			}
 			
-			$body = "include VIEWS_PATH.\"".$view_file."\";";
+			$ba372aa41a6c63b059cbf047f37f712e = "";
+			if(is_array($ba372aa41a6c63b059cbf047f37f712f)){
+				foreach ($ba372aa41a6c63b059cbf047f37f712f as $ba372aa41a6c63b059cbf047f37f712d) {
+					$ba372aa41a6c63b059cbf047f37f712e .= "include VIEWS_PATH.\"".$ba372aa41a6c63b059cbf047f37f712d."\";";	
+				}
+			}else{
+				$ba372aa41a6c63b059cbf047f37f712e = "include VIEWS_PATH.\"".$ba372aa41a6c63b059cbf047f37f712f."\";";	
+			}
+			
 			include VIEWS_PATH . "base.php";
 		}
 

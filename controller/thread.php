@@ -118,8 +118,8 @@
             }
 
             $content = "create-rss.php";
-			include VIEWS_PATH."private-nav.php";
-			include VIEWS_PATH . "thread/thread.php";
+
+            Utils::output_view(["private-nav.php","thread/thread.php"] ,["content"=>$content]);
         }
 
 
@@ -526,8 +526,18 @@
 			}
 
 			$content = "list.php";
-			include VIEWS_PATH."private-nav.php";
-			include VIEWS_PATH . "thread/thread.php";
+			Utils::output_view(["private-nav.php","thread/thread.php"] ,
+				[	
+					"content"=>$content, 
+					"threads" => $threads,
+					"tab_views_all"=>$tab_views_all,
+					"tab_views_noda"=>$tab_views_noda,
+					"tab_views_katsushika"=>$tab_views_katsushika,
+					"all_permitted_threads"=>$all_permitted_threads,
+					"len"=>$len,
+
+				]);
+			
 		}
 
 		public static function delete($thread_id, $post_id){
