@@ -24,10 +24,10 @@
 	define('KEY_TARGET_2','tgt2', TRUE);
 
 	// system directory (config and common)
-	include ROOT . "config/utils.php";
+	include ROOT . "config/config.php";
 	
 	
-	include ROOT . "common/common.php";
+	include ROOT . "common/utils.php";
 	include ROOT . "common/simple_html_dom.php";
 
 	// models directory
